@@ -14,7 +14,7 @@ var get_prev = function (tweetID) {
     client.get('statuses/show/' + tweetID, params, function (error, current, response) {
         if (!error) {
             tweets.push(current);
-            if (current.in_reply_to_screen_name == current.user.screen_name) {
+            if (current.in_reply_to_screen_name) {
                 get_prev(current.in_reply_to_status_id_str);
             }
             else {
